@@ -2,12 +2,23 @@
 
 Each one implements a really pointless fizzbuzz service in more or less the same way to allow comparison of the frameworks.
 
+## Testing
+
 Tested using an API Gateway event with:
 ```json
   "queryStringParameters": {
     "end": "25"
   },
 ```
+
+e.g.
+```sh
+aws lambda invoke --function-name <function> \
+        --cli-binary-format raw-in-base64-out \
+        --payload '{ "queryStringParameters": { "end": 10 } }' /dev/stdout
+```
+
+## Deploying
 
 Deploy via CDK:
 ```sh
@@ -16,7 +27,9 @@ cd cdk
 npx cdk deploy
 ```
 
-## Manual Dependency Injection
+## Stats
+
+### Manual Dependency Injection
 
 - Shaded jar size: 1.3M
 
@@ -30,7 +43,7 @@ npx cdk deploy
   Duration: 1.90 ms	Billed Duration: 2 ms	Memory Size: 1024 MB	Max Memory Used: 109 MB
   ```
 
-## Dagger2
+### Dagger2
 
 - Shaded jar size: 1.3M
 
@@ -44,7 +57,7 @@ npx cdk deploy
   Duration: 2.46 ms	Billed Duration: 3 ms	Memory Size: 1024 MB	Max Memory Used: 109 MB
   ```
 
-## Micronaut
+### Micronaut
 
 - Shaded jar size: 16M
 
@@ -58,7 +71,7 @@ npx cdk deploy
   Duration: 3.53 ms	Billed Duration: 4 ms	Memory Size: 1024 MB	Max Memory Used: 153 MB
   ```
 
-## Spring Cloud Functions
+### Spring Cloud Functions
 
 - Shaded jar size: 22M
 
